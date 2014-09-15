@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :products
+
+
+  resources :users do
+    resources :cart_items
+  end
   root 'homepage#index'
 
   # Example of regular route:
