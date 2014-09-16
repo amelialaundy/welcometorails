@@ -29,10 +29,12 @@ ActiveRecord::Schema.define(version: 20140916024141) do
   create_table "carts", force: true do |t|
     t.integer  "num_items"
     t.integer  "total_price"
-    t.integer  "user_id"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "carts", ["product_id"], name: "index_carts_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"
