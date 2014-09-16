@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.cart = Cart.create
+    puts @user.cart
     if @user.save
       redirect to @user
     else
