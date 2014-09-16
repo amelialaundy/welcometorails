@@ -8,7 +8,7 @@ RSpec.describe User, :type => :model do
     end
 
     it "creates a cart for each new user" do
-      user = User.create
+      user = User.create(email: "amelia@test.com", password: "password")
       expect(user.cart).to be_instance_of(Cart)
     end
   end
