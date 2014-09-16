@@ -11,7 +11,7 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.build_from_product(product)
 
     if @cart_item.save
-      redirect_to @cart_item
+      redirect_to user_cart_items_path(@cart_item)
 
     else
       render 'new'
