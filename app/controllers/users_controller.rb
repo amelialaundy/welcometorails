@@ -2,20 +2,21 @@ class UsersController < ApplicationController
   # def index
   # end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def create
-    @user = User.new(user_params)
-    @user.cart = Cart.create
-    puts @user.cart
-    if @user.save
-      redirect to @user
-    else
-      render 'new'
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   puts "after user"
+  #   @user.cart = Cart.create
+  #   puts @user.cart
+  #   if @user.save
+  #     redirect to @user
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
   def edit
   end
