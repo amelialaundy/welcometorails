@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'homepage/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :products
+
+
+  resources :users do
+    resources :cart_items, except: [:new]
+  end
   root 'homepage#index'
 
   # Example of regular route:

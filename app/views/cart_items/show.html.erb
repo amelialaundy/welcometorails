@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong>
+  <%= @cart_item.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cart_item.price %>
+</p>
+
+<%= link_to 'Back', user_cart_items_path %>
+<%= link_to 'Destroy', user_cart_item_path(current_user, @cart_item),
+                          method: :delete, data: { confirm: 'Are you sure?' } %>
