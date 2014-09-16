@@ -9,4 +9,8 @@
 </p>
 
 <%= link_to 'Back', products_path %>
-<%= link_to 'add to cart', new_user_cart_item_path %>
+
+<%= form_tag "/users/#{current_user.id}/cart_items" do %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= submit_tag 'add to cart' %>
+<% end %>

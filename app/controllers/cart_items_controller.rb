@@ -1,18 +1,18 @@
 class CartItemsController < ApplicationController
 
   before_action :authenticate_user!
-  def new
-    @cart_item = CartItem.new
-  end
 
   def index
     @cart_items = CartItem.all
   end
 
   def create
-    @cart_item = CartItem.new(CartItem_params)
+    product = Product.find(params[:product_id])
+    @cart_item = CartItem.build_from_product(product)
+
     if @cart_item.save
       redirect_to @cart_item
+
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
 
-    if @cart_item.update(CartItem_params)
+    if @cart_item.update(cart_item_params)
       redirect_to @cart_item
     else
       render 'edit'
@@ -39,12 +39,11 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-
-    redirect_to cart_items_path
+    redirect_to user_cart_items_path
   end
 
   private
-    def CartItem_params
-      params.require(:cart_item).permit(:name, :price)
+    def cart_item_params
+      params.require(:product).permit(:name, :price)
     end
 end

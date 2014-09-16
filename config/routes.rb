@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :cart_items
+    resources :cart_items, except: [:new]
   end
   root 'homepage#index'
 
