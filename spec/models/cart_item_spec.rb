@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CartItem, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:product) { create(:product) }
+  it "has a class method to build new carts" do
+    expect(CartItem.build_from_product(product)).to be_instance_of(CartItem)
+  end
 end
