@@ -16,16 +16,24 @@ RSpec.describe ProductsController, :type => :controller do
 
   describe "POST create method" do
 
-    it "creates a new product" do
+    it "creates a new product with correct params" do
       expect{
         post :create, product: FactoryGirl.attributes_for(:product)
       }.to change(Product, :count).by(1)
     end
 
-    it "redirects to the product#show" do
+    it "does not create a new product with incorrect params" do
+      expect{
+      post :create
+      }.to raise_error
+    end
+
+    it "redirects to the product#show after creating a new product" do
       post :create, product: FactoryGirl.attributes_for(:product)
       expect(response).to redirect_to(assigns(:product))
     end
+
+
 
   end
 end
