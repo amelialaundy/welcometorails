@@ -12,6 +12,13 @@ RSpec.describe User, :type => :model do
       expect(user.cart).to be_instance_of(Cart)
     end
 
+    it "should have a has_one relationship with cart" do
+      expect { create(:user).cart }.to_not raise_error
+    end
+
     it { should validate_presence_of(:email) }
+
+
+    it { should have_many(:cart_items) }
   end
 end
